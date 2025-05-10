@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Physik-Rechenfrage – Drag & Drop</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #eef; }
+    .frage { margin-bottom: 20px; }
+    .droppable, .draggable { display: inline-block; padding: 10px 15px; margin: 5px; border: 1px solid #333; border-radius: 5px; background: white; cursor: grab; }
+    .droppable { width: 40px; height: 40px; background: #ddd; text-align: center; vertical-align: middle; line-height: 40px; }
+    #formelziel { min-height: 60px; border: 2px dashed #333; padding: 10px; margin-top: 10px; background: #f8f8f8; }
+    #feedback { margin-top: 15px; font-weight: bold; }
+    input[type='number'] { width: 100px; padding: 5px; margin-left: 10px; }
+  </style>
+</head>
+<body>
+
+<h1>Berechnungsfrage: Spannung berechnen</h1>
+
+<div class="frage">
+  <p><strong>Gegeben:</strong> R = 4 Ohm, I = 2 A</p>
+  <p><strong>1. Was ist gefragt?</strong></p>
+  <p>Antwort: <strong>Spannung (U)</strong></p>
+
+  <p><strong>2. Ziehe die richtige Formel in das Feld:</strong></p>
+  <div id="formelbox">
+    <span class="draggable" draggable="true">U</span>
+    <span class="draggable" draggable="true">=</span>
+    <span class="draggable" draggable="true">R</span>
+    <span class="draggable" draggable="true">·</span>
+    <span class="draggable" draggable="true">I</span>
+    <span class="draggable" draggable="true">+</span>
+    <span class="draggable" draggable="true">/</span>
+  </div>
+
+  <div id="formelziel" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+
+  <button onclick="checkFormel()">Formel prüfen</button>
+  <p id="feedback"></p>
+</div>
+
+<div class="frage">
+  <p><strong>3. Wie groß ist die Spannung?</strong></p>
+  <p>Antwort in Volt: <input type="number" id="nutzerErgebnis" /> <button onclick="checkErgebnis()">Prüfen</button></p>
+  <p id="feedbackErgebnis"></p>
+</div>
+
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+function drop(ev) {
+  ev.preventDefault();
+  const data = ev.dataTransfer.getData("text");
+  const copy = document.createElement("span");
+  copy.className = "droppable";
+  copy.textContent = data;
+  document.getElementById("formelziel").appendChild(copy);
+}
+document.querySelectorAll('.draggable').forEach(el => {
+  el.addEventListener('dragstart', function(ev) {
+    ev.dataTransfer.setData("text", ev.target.textContent);
+  });
+});
+
+function checkFormel() {
+  const ziel = Array.from(document.getElementById("formelziel").children).map(el => el.textContent).join('');
+  if (ziel === "U=R·I") {
+    document.getElementById("feedback").textContent = "Richtig! U = R · I ist korrekt.";
+    document.getElementById("feedback").style.color = "green";
+  } else {
+    document.getElementById("feedback").textContent = "Leider falsch. Überlege dir die Grundformel.";
+    document.getElementById("feedback").style.color = "red";
+  }
+}
+
+function checkErgebnis() {
+  const eingabe = parseFloat(document.getElementById("nutzerErgebnis").value);
+  if (eingabe === 8) {
+    document.getElementById("feedbackErgebnis").textContent = "Richtig: U = 4 · 2 = 8 Volt.";
+    document.getElementById("feedbackErgebnis").style.color = "green";
+  } else {
+    document.getElementById("feedbackErgebnis").textContent = "Das Ergebnis stimmt noch nicht – überprüfe deine Rechnung.";
+    document.getElementById("feedbackErgebnis").style.color = "red";
+  }
+}
+</script>
+
+</body>
+</html>
