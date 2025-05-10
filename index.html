@@ -2,333 +2,87 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Physik-Rechenquiz – Leicht (sichtbar)</title>
+  <title>Physik-Rechenfrage – Klickversion</title>
   <style>
-    body { font-family: sans-serif; background: #eef; padding: 20px; }
-    .frage { background: white; padding: 15px; margin: 15px 0; border-radius: 6px; }
-    .droppable, .draggable {
-      display: inline-block; padding: 10px 15px; margin: 5px;
-      border: 1px solid #333; border-radius: 5px; background: white; cursor: grab;
-    }
-    .droppable {
-      width: 40px; height: 40px; background: #ddd; text-align: center;
-      vertical-align: middle; line-height: 40px;
-    }
-    .formelziel {
-      min-height: 60px; border: 2px dashed #333; padding: 10px; background: #f8f8f8;
-    }
+    body { font-family: sans-serif; padding: 20px; background: #eef; }
+    .frage { background: white; padding: 15px; margin-bottom: 20px; border-radius: 6px; }
+    .formelfeld { border: 2px dashed #666; padding: 10px; min-height: 30px; margin: 10px 0; background: #fff; }
+    button { margin: 4px; font-size: 16px; }
     input[type='text'] { padding: 5px; width: 160px; }
-    .feedback { margin-top: 10px; font-weight: bold; }
+    .feedback { font-weight: bold; margin-top: 10px; }
   </style>
 </head>
 <body>
-<h1>Physik-Rechenquiz – Leicht</h1>
-<p>5 Aufgaben mit Drag & Drop, freier Eingabe und Rückmeldung. Falsche Formeln führen zu einem Lernvideo.</p>
 
-
-<div class="frage">
-  <p><strong>Aufgabe 1</strong><br><em>Gegeben:</em> R = 4 Ohm, I = 2 A<br><em>Gesucht ist:</em> Spannung</p>
-  <p>1. Gib den richtigen Formelbuchstaben ein:</p>
-  <input type="text" id="eingabe1"> <span id="feedbackGesucht1" class="feedback"></span>
-
-  <p>2. Ziehe die richtige Formel in dieses Feld:</p>
-  <div><span class="draggable" draggable="true" ondragstart="drag(event)">=</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">P</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">t</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">E</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">·</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">+</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">W</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">Q</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">U</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">R</span></div>
-  <div id="ziel1" class="formelziel" ondragover="allowDrop(event)" ondrop="drop(event, 1)"></div>
-  <span id="feedbackFormel1" class="feedback"></span>
-
-  <p>3. Berechne das Ergebnis:</p>
-  <input type="text" id="ergebnis1"> <span id="feedbackErgebnis1" class="feedback"></span>
-</div>
+<h1>Physikfrage (mobilfreundlich)</h1>
 
 <div class="frage">
-  <p><strong>Aufgabe 2</strong><br><em>Gegeben:</em> U = 6 V, R = 2 Ohm<br><em>Gesucht ist:</em> Stromstärke</p>
+  <p><strong>Gegeben:</strong> R = 4 Ohm, I = 2 A</p>
+  <p><strong>Gesucht ist:</strong> Spannung</p>
+
   <p>1. Gib den richtigen Formelbuchstaben ein:</p>
-  <input type="text" id="eingabe2"> <span id="feedbackGesucht2" class="feedback"></span>
+  <input type="text" id="eingabe1">
+  <p class="feedback" id="feedbackGesucht"></p>
 
-  <p>2. Ziehe die richtige Formel in dieses Feld:</p>
-  <div><span class="draggable" draggable="true" ondragstart="drag(event)">/</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">E</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">=</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">P</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">I</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">U</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">W</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">+</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">R</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">·</span></div>
-  <div id="ziel2" class="formelziel" ondragover="allowDrop(event)" ondrop="drop(event, 2)"></div>
-  <span id="feedbackFormel2" class="feedback"></span>
+  <p>2. Klicke die richtige Formel zusammen:</p>
+  <div><button onclick="addToFormula('U')">U</button>
+<button onclick="addToFormula('=')">=</button>
+<button onclick="addToFormula('R')">R</button>
+<button onclick="addToFormula('·')">·</button>
+<button onclick="addToFormula('I')">I</button>
+<button onclick="addToFormula('+')">+</button>
+<button onclick="addToFormula('/')">/</button>
+<button onclick="addToFormula('P')">P</button>
+<button onclick="addToFormula('t')">t</button>
+<button onclick="addToFormula('Q')">Q</button></div>
+  <div id="formel1" class="formelfeld"></div>
+  <button onclick="checkFormel()">Formel prüfen</button>
+  <p class="feedback" id="feedbackFormel"></p>
 
-  <p>3. Berechne das Ergebnis:</p>
-  <input type="text" id="ergebnis2"> <span id="feedbackErgebnis2" class="feedback"></span>
+  <p>3. Wie groß ist die Spannung?</p>
+  <input type="text" id="ergebnis1">
+  <button onclick="checkErgebnis()">Antwort prüfen</button>
+  <p class="feedback" id="feedbackErgebnis"></p>
 </div>
-
-<div class="frage">
-  <p><strong>Aufgabe 3</strong><br><em>Gegeben:</em> U = 10 V, I = 2 A<br><em>Gesucht ist:</em> Widerstand</p>
-  <p>1. Gib den richtigen Formelbuchstaben ein:</p>
-  <input type="text" id="eingabe3"> <span id="feedbackGesucht3" class="feedback"></span>
-
-  <p>2. Ziehe die richtige Formel in dieses Feld:</p>
-  <div><span class="draggable" draggable="true" ondragstart="drag(event)">=</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">+</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">·</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">E</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">/</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">Q</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">U</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">P</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">I</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">t</span></div>
-  <div id="ziel3" class="formelziel" ondragover="allowDrop(event)" ondrop="drop(event, 3)"></div>
-  <span id="feedbackFormel3" class="feedback"></span>
-
-  <p>3. Berechne das Ergebnis:</p>
-  <input type="text" id="ergebnis3"> <span id="feedbackErgebnis3" class="feedback"></span>
-</div>
-
-<div class="frage">
-  <p><strong>Aufgabe 4</strong><br><em>Gegeben:</em> U = 12 V, I = 0.5 A<br><em>Gesucht ist:</em> Leistung</p>
-  <p>1. Gib den richtigen Formelbuchstaben ein:</p>
-  <input type="text" id="eingabe4"> <span id="feedbackGesucht4" class="feedback"></span>
-
-  <p>2. Ziehe die richtige Formel in dieses Feld:</p>
-  <div><span class="draggable" draggable="true" ondragstart="drag(event)">=</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">E</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">·</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">W</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">t</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">Q</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">P</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">I</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">/</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">R</span></div>
-  <div id="ziel4" class="formelziel" ondragover="allowDrop(event)" ondrop="drop(event, 4)"></div>
-  <span id="feedbackFormel4" class="feedback"></span>
-
-  <p>3. Berechne das Ergebnis:</p>
-  <input type="text" id="ergebnis4"> <span id="feedbackErgebnis4" class="feedback"></span>
-</div>
-
-<div class="frage">
-  <p><strong>Aufgabe 5</strong><br><em>Gegeben:</em> P = 60 W, t = 2 s<br><em>Gesucht ist:</em> Energie</p>
-  <p>1. Gib den richtigen Formelbuchstaben ein:</p>
-  <input type="text" id="eingabe5"> <span id="feedbackGesucht5" class="feedback"></span>
-
-  <p>2. Ziehe die richtige Formel in dieses Feld:</p>
-  <div><span class="draggable" draggable="true" ondragstart="drag(event)">P</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">W</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">=</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">/</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">U</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">R</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">+</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">Q</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">t</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">·</span></div>
-  <div id="ziel5" class="formelziel" ondragover="allowDrop(event)" ondrop="drop(event, 5)"></div>
-  <span id="feedbackFormel5" class="feedback"></span>
-
-  <p>3. Berechne das Ergebnis:</p>
-  <input type="text" id="ergebnis5"> <span id="feedbackErgebnis5" class="feedback"></span>
-</div>
-
-
-<button onclick="checkAlles()">Quiz auswerten</button>
 
 <script>
-function allowDrop(ev) { ev.preventDefault(); }
-function drop(ev, id) {
-  ev.preventDefault();
-  const data = ev.dataTransfer.getData("text");
-  const span = document.createElement("span");
-  span.className = "droppable";
-  span.textContent = data;
-  document.getElementById("ziel" + id).appendChild(span);
+function addToFormula(zeichen) {
+  document.getElementById("formel1").textContent += zeichen;
 }
-function drag(ev) { ev.dataTransfer.setData("text", ev.target.textContent); }
-function checkAlles() {
-let korrekt = 0;
 
-  let eingabe1 = document.getElementById("eingabe1").value.trim();
-  let formel1 = Array.from(document.getElementById("ziel1").children).map(el => el.textContent).join('');
-  let ergebnis1 = document.getElementById("ergebnis1").value.trim().toLowerCase().replace(/\s+/g, '');
-
-  let ok = true;
-  if (eingabe1 !== "U") {
-    document.getElementById("feedbackGesucht1").textContent = "Falsch. Richtig ist: U";
-    document.getElementById("feedbackGesucht1").style.color = "red";
-    ok = false;
+function checkFormel() {
+  const f = document.getElementById("formel1").textContent;
+  if (f === "U=R·I" || f === "U=I·R") {
+    document.getElementById("feedbackFormel").textContent = "Richtig!";
+    document.getElementById("feedbackFormel").style.color = "green";
   } else {
-    document.getElementById("feedbackGesucht1").textContent = "Richtig!";
-    document.getElementById("feedbackGesucht1").style.color = "green";
+    document.getElementById("feedbackFormel").innerHTML = "Leider falsch. <a href='https://studyflix.de/elektrotechnik/elektrische-spannung-1831/video' target='_blank'>Hier kannst du dein Wissen auffrischen</a>";
+    document.getElementById("feedbackFormel").style.color = "red";
   }
-
-  if (formel1 === "U=R·I" || formel1 === "U=I·R") {
-    document.getElementById("feedbackFormel1").textContent = "Richtig!";
-    document.getElementById("feedbackFormel1").style.color = "green";
-  } else {
-    document.getElementById("feedbackFormel1").innerHTML = "Leider falsch.<br><a href='https://studyflix.de/elektrotechnik/elektrische-spannung-1831/video' target='_blank'>Hier kannst du dein Wissen auffrischen</a>";
-    document.getElementById("feedbackFormel1").style.color = "red";
-    ok = false;
-  }
-
-  if (ergebnis1 === "8" || ergebnis1 === "8v" || ergebnis1 === "8 v" || ergebnis1 === "8volt" || ergebnis1 === "8 volt") {
-    document.getElementById("feedbackErgebnis1").textContent = "Richtig!";
-    document.getElementById("feedbackErgebnis1").style.color = "green";
-  } else {
-    document.getElementById("feedbackErgebnis1").textContent = "Leider nicht korrekt.";
-    document.getElementById("feedbackErgebnis1").style.color = "red";
-    ok = false;
-  }
-
-  if (ok) korrekt++;
-
-  let eingabe2 = document.getElementById("eingabe2").value.trim();
-  let formel2 = Array.from(document.getElementById("ziel2").children).map(el => el.textContent).join('');
-  let ergebnis2 = document.getElementById("ergebnis2").value.trim().toLowerCase().replace(/\s+/g, '');
-
-  let ok = true;
-  if (eingabe2 !== "I") {
-    document.getElementById("feedbackGesucht2").textContent = "Falsch. Richtig ist: I";
-    document.getElementById("feedbackGesucht2").style.color = "red";
-    ok = false;
-  } else {
-    document.getElementById("feedbackGesucht2").textContent = "Richtig!";
-    document.getElementById("feedbackGesucht2").style.color = "green";
-  }
-
-  if (formel2 === "I=U/R" || formel2 === "I=U÷R") {
-    document.getElementById("feedbackFormel2").textContent = "Richtig!";
-    document.getElementById("feedbackFormel2").style.color = "green";
-  } else {
-    document.getElementById("feedbackFormel2").innerHTML = "Leider falsch.<br><a href='https://studyflix.de/elektrotechnik/elektrische-spannung-1831/video' target='_blank'>Hier kannst du dein Wissen auffrischen</a>";
-    document.getElementById("feedbackFormel2").style.color = "red";
-    ok = false;
-  }
-
-  if (ergebnis2 === "3" || ergebnis2 === "3a" || ergebnis2 === "3 a" || ergebnis2 === "3ampere" || ergebnis2 === "3 ampere") {
-    document.getElementById("feedbackErgebnis2").textContent = "Richtig!";
-    document.getElementById("feedbackErgebnis2").style.color = "green";
-  } else {
-    document.getElementById("feedbackErgebnis2").textContent = "Leider nicht korrekt.";
-    document.getElementById("feedbackErgebnis2").style.color = "red";
-    ok = false;
-  }
-
-  if (ok) korrekt++;
-
-  let eingabe3 = document.getElementById("eingabe3").value.trim();
-  let formel3 = Array.from(document.getElementById("ziel3").children).map(el => el.textContent).join('');
-  let ergebnis3 = document.getElementById("ergebnis3").value.trim().toLowerCase().replace(/\s+/g, '');
-
-  let ok = true;
-  if (eingabe3 !== "R") {
-    document.getElementById("feedbackGesucht3").textContent = "Falsch. Richtig ist: R";
-    document.getElementById("feedbackGesucht3").style.color = "red";
-    ok = false;
-  } else {
-    document.getElementById("feedbackGesucht3").textContent = "Richtig!";
-    document.getElementById("feedbackGesucht3").style.color = "green";
-  }
-
-  if (formel3 === "R=U/I" || formel3 === "R=U÷I") {
-    document.getElementById("feedbackFormel3").textContent = "Richtig!";
-    document.getElementById("feedbackFormel3").style.color = "green";
-  } else {
-    document.getElementById("feedbackFormel3").innerHTML = "Leider falsch.<br><a href='https://studyflix.de/elektrotechnik/elektrische-spannung-1831/video' target='_blank'>Hier kannst du dein Wissen auffrischen</a>";
-    document.getElementById("feedbackFormel3").style.color = "red";
-    ok = false;
-  }
-
-  if (ergebnis3 === "5" || ergebnis3 === "5 ohm" || ergebnis3 === "5ohm" || ergebnis3 === "5 Ω") {
-    document.getElementById("feedbackErgebnis3").textContent = "Richtig!";
-    document.getElementById("feedbackErgebnis3").style.color = "green";
-  } else {
-    document.getElementById("feedbackErgebnis3").textContent = "Leider nicht korrekt.";
-    document.getElementById("feedbackErgebnis3").style.color = "red";
-    ok = false;
-  }
-
-  if (ok) korrekt++;
-
-  let eingabe4 = document.getElementById("eingabe4").value.trim();
-  let formel4 = Array.from(document.getElementById("ziel4").children).map(el => el.textContent).join('');
-  let ergebnis4 = document.getElementById("ergebnis4").value.trim().toLowerCase().replace(/\s+/g, '');
-
-  let ok = true;
-  if (eingabe4 !== "P") {
-    document.getElementById("feedbackGesucht4").textContent = "Falsch. Richtig ist: P";
-    document.getElementById("feedbackGesucht4").style.color = "red";
-    ok = false;
-  } else {
-    document.getElementById("feedbackGesucht4").textContent = "Richtig!";
-    document.getElementById("feedbackGesucht4").style.color = "green";
-  }
-
-  if (formel4 === "P=U·I" || formel4 === "P=I·U") {
-    document.getElementById("feedbackFormel4").textContent = "Richtig!";
-    document.getElementById("feedbackFormel4").style.color = "green";
-  } else {
-    document.getElementById("feedbackFormel4").innerHTML = "Leider falsch.<br><a href='https://studyflix.de/elektrotechnik/elektrische-spannung-1831/video' target='_blank'>Hier kannst du dein Wissen auffrischen</a>";
-    document.getElementById("feedbackFormel4").style.color = "red";
-    ok = false;
-  }
-
-  if (ergebnis4 === "6" || ergebnis4 === "6w" || ergebnis4 === "6 w" || ergebnis4 === "6watt" || ergebnis4 === "6 watt") {
-    document.getElementById("feedbackErgebnis4").textContent = "Richtig!";
-    document.getElementById("feedbackErgebnis4").style.color = "green";
-  } else {
-    document.getElementById("feedbackErgebnis4").textContent = "Leider nicht korrekt.";
-    document.getElementById("feedbackErgebnis4").style.color = "red";
-    ok = false;
-  }
-
-  if (ok) korrekt++;
-
-  let eingabe5 = document.getElementById("eingabe5").value.trim();
-  let formel5 = Array.from(document.getElementById("ziel5").children).map(el => el.textContent).join('');
-  let ergebnis5 = document.getElementById("ergebnis5").value.trim().toLowerCase().replace(/\s+/g, '');
-
-  let ok = true;
-  if (eingabe5 !== "E") {
-    document.getElementById("feedbackGesucht5").textContent = "Falsch. Richtig ist: E";
-    document.getElementById("feedbackGesucht5").style.color = "red";
-    ok = false;
-  } else {
-    document.getElementById("feedbackGesucht5").textContent = "Richtig!";
-    document.getElementById("feedbackGesucht5").style.color = "green";
-  }
-
-  if (formel5 === "E=P·t" || formel5 === "E=t·P") {
-    document.getElementById("feedbackFormel5").textContent = "Richtig!";
-    document.getElementById("feedbackFormel5").style.color = "green";
-  } else {
-    document.getElementById("feedbackFormel5").innerHTML = "Leider falsch.<br><a href='https://studyflix.de/elektrotechnik/elektrische-spannung-1831/video' target='_blank'>Hier kannst du dein Wissen auffrischen</a>";
-    document.getElementById("feedbackFormel5").style.color = "red";
-    ok = false;
-  }
-
-  if (ergebnis5 === "120" || ergebnis5 === "120j" || ergebnis5 === "120 j" || ergebnis5 === "120joule" || ergebnis5 === "120 joule") {
-    document.getElementById("feedbackErgebnis5").textContent = "Richtig!";
-    document.getElementById("feedbackErgebnis5").style.color = "green";
-  } else {
-    document.getElementById("feedbackErgebnis5").textContent = "Leider nicht korrekt.";
-    document.getElementById("feedbackErgebnis5").style.color = "red";
-    ok = false;
-  }
-
-  if (ok) korrekt++;
-alert("Du hast " + korrekt + " von 5 Aufgaben richtig gelöst.");
 }
+
+function checkErgebnis() {
+  let eingabe = document.getElementById("ergebnis1").value.toLowerCase().replace(/\s+/g, '');
+  const erlaubt = ["8", "8v", "8volt"];
+  if (erlaubt.includes(eingabe)) {
+    document.getElementById("feedbackErgebnis").textContent = "Richtig!";
+    document.getElementById("feedbackErgebnis").style.color = "green";
+  } else {
+    document.getElementById("feedbackErgebnis").textContent = "Leider falsch.";
+    document.getElementById("feedbackErgebnis").style.color = "red";
+  }
+}
+
+document.getElementById("eingabe1").addEventListener("input", function() {
+  const val = this.value.trim();
+  if (val === "U") {
+    document.getElementById("feedbackGesucht").textContent = "Richtig!";
+    document.getElementById("feedbackGesucht").style.color = "green";
+  } else {
+    document.getElementById("feedbackGesucht").textContent = "Falsch. Gesucht ist U.";
+    document.getElementById("feedbackGesucht").style.color = "red";
+  }
+});
 </script>
 </body>
 </html>
