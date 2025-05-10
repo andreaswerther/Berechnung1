@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Physik-Rechenfrage – Klickversion</title>
+  <meta charset="UTF-8" />
+  <title>Physik-Rechenquiz – Leicht</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; background: #eef; }
+    body { font-family: sans-serif; background: #eef; padding: 20px; }
     .frage { background: white; padding: 15px; margin-bottom: 20px; border-radius: 6px; }
     .formelfeld { border: 2px dashed #666; padding: 10px; min-height: 30px; margin: 10px 0; background: #fff; }
     button { margin: 4px; font-size: 16px; }
@@ -13,76 +13,328 @@
   </style>
 </head>
 <body>
+<h1>Physik-Rechenquiz – Leicht</h1>
+<p>5 Aufgaben mit Klick-Formel, Ergebnisprüfung und Rückmeldung. Falsche Formeln zeigen ein Lernvideo.</p>
 
-<h1>Physikfrage (mobilfreundlich)</h1>
 
 <div class="frage">
-  <p><strong>Gegeben:</strong> R = 4 Ohm, I = 2 A</p>
-  <p><strong>Gesucht ist:</strong> Spannung</p>
+  <p><strong>Aufgabe 1</strong><br><em>Gegeben:</em> R = 4 Ohm, I = 2 A<br><em>Gesucht ist:</em> Spannung</p>
 
   <p>1. Gib den richtigen Formelbuchstaben ein:</p>
   <input type="text" id="eingabe1">
-  <p class="feedback" id="feedbackGesucht"></p>
+  <p class="feedback" id="feedbackGesucht1"></p>
 
   <p>2. Klicke die richtige Formel zusammen:</p>
-  <div><button onclick="addToFormula('U')">U</button>
-<button onclick="addToFormula('=')">=</button>
-<button onclick="addToFormula('R')">R</button>
-<button onclick="addToFormula('·')">·</button>
-<button onclick="addToFormula('I')">I</button>
-<button onclick="addToFormula('+')">+</button>
-<button onclick="addToFormula('/')">/</button>
-<button onclick="addToFormula('P')">P</button>
-<button onclick="addToFormula('t')">t</button>
-<button onclick="addToFormula('Q')">Q</button></div>
+  <div><button onclick="addToFormula('U', 'formel1')"> U </button>
+<button onclick="addToFormula('=', 'formel1')"> = </button>
+<button onclick="addToFormula('R', 'formel1')"> R </button>
+<button onclick="addToFormula('·', 'formel1')"> · </button>
+<button onclick="addToFormula('I', 'formel1')"> I </button>
+<button onclick="addToFormula('+', 'formel1')"> + </button>
+<button onclick="addToFormula('/', 'formel1')"> / </button>
+<button onclick="addToFormula('P', 'formel1')"> P </button>
+<button onclick="addToFormula('t', 'formel1')"> t </button>
+<button onclick="addToFormula('Q', 'formel1')"> Q </button>
+<button onclick="addToFormula('E', 'formel1')"> E </button></div>
   <div id="formel1" class="formelfeld"></div>
-  <button onclick="checkFormel()">Formel prüfen</button>
-  <p class="feedback" id="feedbackFormel"></p>
+  <button onclick="checkFormel(1)">Formel prüfen</button>
+  <p class="feedback" id="feedbackFormel1"></p>
 
-  <p>3. Wie groß ist die Spannung?</p>
+  <p>3. Berechne das Ergebnis:</p>
   <input type="text" id="ergebnis1">
-  <button onclick="checkErgebnis()">Antwort prüfen</button>
-  <p class="feedback" id="feedbackErgebnis"></p>
+  <button onclick="checkErgebnis(1)">Antwort prüfen</button>
+  <p class="feedback" id="feedbackErgebnis1"></p>
 </div>
 
+<div class="frage">
+  <p><strong>Aufgabe 2</strong><br><em>Gegeben:</em> U = 6 V, R = 2 Ohm<br><em>Gesucht ist:</em> Stromstärke</p>
+
+  <p>1. Gib den richtigen Formelbuchstaben ein:</p>
+  <input type="text" id="eingabe2">
+  <p class="feedback" id="feedbackGesucht2"></p>
+
+  <p>2. Klicke die richtige Formel zusammen:</p>
+  <div><button onclick="addToFormula('U', 'formel2')"> U </button>
+<button onclick="addToFormula('=', 'formel2')"> = </button>
+<button onclick="addToFormula('R', 'formel2')"> R </button>
+<button onclick="addToFormula('·', 'formel2')"> · </button>
+<button onclick="addToFormula('I', 'formel2')"> I </button>
+<button onclick="addToFormula('+', 'formel2')"> + </button>
+<button onclick="addToFormula('/', 'formel2')"> / </button>
+<button onclick="addToFormula('P', 'formel2')"> P </button>
+<button onclick="addToFormula('t', 'formel2')"> t </button>
+<button onclick="addToFormula('Q', 'formel2')"> Q </button>
+<button onclick="addToFormula('E', 'formel2')"> E </button></div>
+  <div id="formel2" class="formelfeld"></div>
+  <button onclick="checkFormel(2)">Formel prüfen</button>
+  <p class="feedback" id="feedbackFormel2"></p>
+
+  <p>3. Berechne das Ergebnis:</p>
+  <input type="text" id="ergebnis2">
+  <button onclick="checkErgebnis(2)">Antwort prüfen</button>
+  <p class="feedback" id="feedbackErgebnis2"></p>
+</div>
+
+<div class="frage">
+  <p><strong>Aufgabe 3</strong><br><em>Gegeben:</em> U = 10 V, I = 2 A<br><em>Gesucht ist:</em> Widerstand</p>
+
+  <p>1. Gib den richtigen Formelbuchstaben ein:</p>
+  <input type="text" id="eingabe3">
+  <p class="feedback" id="feedbackGesucht3"></p>
+
+  <p>2. Klicke die richtige Formel zusammen:</p>
+  <div><button onclick="addToFormula('U', 'formel3')"> U </button>
+<button onclick="addToFormula('=', 'formel3')"> = </button>
+<button onclick="addToFormula('R', 'formel3')"> R </button>
+<button onclick="addToFormula('·', 'formel3')"> · </button>
+<button onclick="addToFormula('I', 'formel3')"> I </button>
+<button onclick="addToFormula('+', 'formel3')"> + </button>
+<button onclick="addToFormula('/', 'formel3')"> / </button>
+<button onclick="addToFormula('P', 'formel3')"> P </button>
+<button onclick="addToFormula('t', 'formel3')"> t </button>
+<button onclick="addToFormula('Q', 'formel3')"> Q </button>
+<button onclick="addToFormula('E', 'formel3')"> E </button></div>
+  <div id="formel3" class="formelfeld"></div>
+  <button onclick="checkFormel(3)">Formel prüfen</button>
+  <p class="feedback" id="feedbackFormel3"></p>
+
+  <p>3. Berechne das Ergebnis:</p>
+  <input type="text" id="ergebnis3">
+  <button onclick="checkErgebnis(3)">Antwort prüfen</button>
+  <p class="feedback" id="feedbackErgebnis3"></p>
+</div>
+
+<div class="frage">
+  <p><strong>Aufgabe 4</strong><br><em>Gegeben:</em> U = 12 V, I = 0.5 A<br><em>Gesucht ist:</em> Leistung</p>
+
+  <p>1. Gib den richtigen Formelbuchstaben ein:</p>
+  <input type="text" id="eingabe4">
+  <p class="feedback" id="feedbackGesucht4"></p>
+
+  <p>2. Klicke die richtige Formel zusammen:</p>
+  <div><button onclick="addToFormula('U', 'formel4')"> U </button>
+<button onclick="addToFormula('=', 'formel4')"> = </button>
+<button onclick="addToFormula('R', 'formel4')"> R </button>
+<button onclick="addToFormula('·', 'formel4')"> · </button>
+<button onclick="addToFormula('I', 'formel4')"> I </button>
+<button onclick="addToFormula('+', 'formel4')"> + </button>
+<button onclick="addToFormula('/', 'formel4')"> / </button>
+<button onclick="addToFormula('P', 'formel4')"> P </button>
+<button onclick="addToFormula('t', 'formel4')"> t </button>
+<button onclick="addToFormula('Q', 'formel4')"> Q </button>
+<button onclick="addToFormula('E', 'formel4')"> E </button></div>
+  <div id="formel4" class="formelfeld"></div>
+  <button onclick="checkFormel(4)">Formel prüfen</button>
+  <p class="feedback" id="feedbackFormel4"></p>
+
+  <p>3. Berechne das Ergebnis:</p>
+  <input type="text" id="ergebnis4">
+  <button onclick="checkErgebnis(4)">Antwort prüfen</button>
+  <p class="feedback" id="feedbackErgebnis4"></p>
+</div>
+
+<div class="frage">
+  <p><strong>Aufgabe 5</strong><br><em>Gegeben:</em> P = 60 W, t = 2 s<br><em>Gesucht ist:</em> Energie</p>
+
+  <p>1. Gib den richtigen Formelbuchstaben ein:</p>
+  <input type="text" id="eingabe5">
+  <p class="feedback" id="feedbackGesucht5"></p>
+
+  <p>2. Klicke die richtige Formel zusammen:</p>
+  <div><button onclick="addToFormula('U', 'formel5')"> U </button>
+<button onclick="addToFormula('=', 'formel5')"> = </button>
+<button onclick="addToFormula('R', 'formel5')"> R </button>
+<button onclick="addToFormula('·', 'formel5')"> · </button>
+<button onclick="addToFormula('I', 'formel5')"> I </button>
+<button onclick="addToFormula('+', 'formel5')"> + </button>
+<button onclick="addToFormula('/', 'formel5')"> / </button>
+<button onclick="addToFormula('P', 'formel5')"> P </button>
+<button onclick="addToFormula('t', 'formel5')"> t </button>
+<button onclick="addToFormula('Q', 'formel5')"> Q </button>
+<button onclick="addToFormula('E', 'formel5')"> E </button></div>
+  <div id="formel5" class="formelfeld"></div>
+  <button onclick="checkFormel(5)">Formel prüfen</button>
+  <p class="feedback" id="feedbackFormel5"></p>
+
+  <p>3. Berechne das Ergebnis:</p>
+  <input type="text" id="ergebnis5">
+  <button onclick="checkErgebnis(5)">Antwort prüfen</button>
+  <p class="feedback" id="feedbackErgebnis5"></p>
+</div>
+
+<button onclick="checkAlles()">Alle Eingaben auswerten</button>
 <script>
-function addToFormula(zeichen) {
-  document.getElementById("formel1").textContent += zeichen;
+function addToFormula(zeichen, feldID) {
+document.getElementById(feldID).textContent += zeichen;
 }
+function checkAlles() {
+let korrekt = 0;
 
-function checkFormel() {
-  const f = document.getElementById("formel1").textContent;
-  if (f === "U=R·I" || f === "U=I·R") {
-    document.getElementById("feedbackFormel").textContent = "Richtig!";
-    document.getElementById("feedbackFormel").style.color = "green";
+  let eingabe = document.getElementById("eingabe1").value.trim();
+  if (eingabe === "U") {
+    document.getElementById("feedbackGesucht1").textContent = "Richtig!";
+    document.getElementById("feedbackGesucht1").style.color = "green";
+    korrekt++;
   } else {
-    document.getElementById("feedbackFormel").innerHTML = "Leider falsch. <a href='https://studyflix.de/elektrotechnik/elektrische-spannung-1831/video' target='_blank'>Hier kannst du dein Wissen auffrischen</a>";
-    document.getElementById("feedbackFormel").style.color = "red";
+    document.getElementById("feedbackGesucht1").textContent = "Falsch. Gesucht ist: U";
+    document.getElementById("feedbackGesucht1").style.color = "red";
   }
+
+  let eingabe = document.getElementById("eingabe2").value.trim();
+  if (eingabe === "I") {
+    document.getElementById("feedbackGesucht2").textContent = "Richtig!";
+    document.getElementById("feedbackGesucht2").style.color = "green";
+    korrekt++;
+  } else {
+    document.getElementById("feedbackGesucht2").textContent = "Falsch. Gesucht ist: I";
+    document.getElementById("feedbackGesucht2").style.color = "red";
+  }
+
+  let eingabe = document.getElementById("eingabe3").value.trim();
+  if (eingabe === "R") {
+    document.getElementById("feedbackGesucht3").textContent = "Richtig!";
+    document.getElementById("feedbackGesucht3").style.color = "green";
+    korrekt++;
+  } else {
+    document.getElementById("feedbackGesucht3").textContent = "Falsch. Gesucht ist: R";
+    document.getElementById("feedbackGesucht3").style.color = "red";
+  }
+
+  let eingabe = document.getElementById("eingabe4").value.trim();
+  if (eingabe === "P") {
+    document.getElementById("feedbackGesucht4").textContent = "Richtig!";
+    document.getElementById("feedbackGesucht4").style.color = "green";
+    korrekt++;
+  } else {
+    document.getElementById("feedbackGesucht4").textContent = "Falsch. Gesucht ist: P";
+    document.getElementById("feedbackGesucht4").style.color = "red";
+  }
+
+  let eingabe = document.getElementById("eingabe5").value.trim();
+  if (eingabe === "E") {
+    document.getElementById("feedbackGesucht5").textContent = "Richtig!";
+    document.getElementById("feedbackGesucht5").style.color = "green";
+    korrekt++;
+  } else {
+    document.getElementById("feedbackGesucht5").textContent = "Falsch. Gesucht ist: E";
+    document.getElementById("feedbackGesucht5").style.color = "red";
+  }
+
 }
+function checkFormel(i) {
+  const feld = document.getElementById("formel" + i).textContent;
+  let korrekt = false;
 
-function checkErgebnis() {
-  let eingabe = document.getElementById("ergebnis1").value.toLowerCase().replace(/\s+/g, '');
-  const erlaubt = ["8", "8v", "8volt"];
-  if (erlaubt.includes(eingabe)) {
-    document.getElementById("feedbackErgebnis").textContent = "Richtig!";
-    document.getElementById("feedbackErgebnis").style.color = "green";
-  } else {
-    document.getElementById("feedbackErgebnis").textContent = "Leider falsch.";
-    document.getElementById("feedbackErgebnis").style.color = "red";
+  if (i === 1) {
+    if (feld === "U=R·I" || feld === "U=I·R") {
+      document.getElementById("feedbackFormel1").textContent = "Richtig!";
+      document.getElementById("feedbackFormel1").style.color = "green";
+      korrekt = true;
+    } else {
+      document.getElementById("feedbackFormel1").innerHTML = "Leider falsch. <a href='https://studyflix.de/elektrotechnik/elektrische-spannung-1831/video' target='_blank'>Hier kannst du dein Wissen auffrischen</a>";
+      document.getElementById("feedbackFormel1").style.color = "red";
+    }
   }
+
+  if (i === 2) {
+    if (feld === "I=U/R" || feld === "I=U÷R") {
+      document.getElementById("feedbackFormel2").textContent = "Richtig!";
+      document.getElementById("feedbackFormel2").style.color = "green";
+      korrekt = true;
+    } else {
+      document.getElementById("feedbackFormel2").innerHTML = "Leider falsch. <a href='https://studyflix.de/elektrotechnik/elektrische-spannung-1831/video' target='_blank'>Hier kannst du dein Wissen auffrischen</a>";
+      document.getElementById("feedbackFormel2").style.color = "red";
+    }
+  }
+
+  if (i === 3) {
+    if (feld === "R=U/I" || feld === "R=U÷I") {
+      document.getElementById("feedbackFormel3").textContent = "Richtig!";
+      document.getElementById("feedbackFormel3").style.color = "green";
+      korrekt = true;
+    } else {
+      document.getElementById("feedbackFormel3").innerHTML = "Leider falsch. <a href='https://studyflix.de/elektrotechnik/elektrische-spannung-1831/video' target='_blank'>Hier kannst du dein Wissen auffrischen</a>";
+      document.getElementById("feedbackFormel3").style.color = "red";
+    }
+  }
+
+  if (i === 4) {
+    if (feld === "P=U·I" || feld === "P=I·U") {
+      document.getElementById("feedbackFormel4").textContent = "Richtig!";
+      document.getElementById("feedbackFormel4").style.color = "green";
+      korrekt = true;
+    } else {
+      document.getElementById("feedbackFormel4").innerHTML = "Leider falsch. <a href='https://studyflix.de/elektrotechnik/elektrische-spannung-1831/video' target='_blank'>Hier kannst du dein Wissen auffrischen</a>";
+      document.getElementById("feedbackFormel4").style.color = "red";
+    }
+  }
+
+  if (i === 5) {
+    if (feld === "E=P·t" || feld === "E=t·P") {
+      document.getElementById("feedbackFormel5").textContent = "Richtig!";
+      document.getElementById("feedbackFormel5").style.color = "green";
+      korrekt = true;
+    } else {
+      document.getElementById("feedbackFormel5").innerHTML = "Leider falsch. <a href='https://studyflix.de/elektrotechnik/elektrische-spannung-1831/video' target='_blank'>Hier kannst du dein Wissen auffrischen</a>";
+      document.getElementById("feedbackFormel5").style.color = "red";
+    }
+  }
+
 }
+function checkErgebnis(i) {
+  const val = document.getElementById("ergebnis" + i).value.toLowerCase().replace(/\s+/g, '');
+  let korrekt = false;
 
-document.getElementById("eingabe1").addEventListener("input", function() {
-  const val = this.value.trim();
-  if (val === "U") {
-    document.getElementById("feedbackGesucht").textContent = "Richtig!";
-    document.getElementById("feedbackGesucht").style.color = "green";
-  } else {
-    document.getElementById("feedbackGesucht").textContent = "Falsch. Gesucht ist U.";
-    document.getElementById("feedbackGesucht").style.color = "red";
+  if (i === 1) {
+    if (val === "8" || val === "8v" || val === "8 v" || val === "8volt" || val === "8 volt") {
+      document.getElementById("feedbackErgebnis1").textContent = "Richtig!";
+      document.getElementById("feedbackErgebnis1").style.color = "green";
+    } else {
+      document.getElementById("feedbackErgebnis1").textContent = "Leider falsch.";
+      document.getElementById("feedbackErgebnis1").style.color = "red";
+    }
   }
-});
+
+  if (i === 2) {
+    if (val === "3" || val === "3a" || val === "3 a" || val === "3ampere" || val === "3 ampere") {
+      document.getElementById("feedbackErgebnis2").textContent = "Richtig!";
+      document.getElementById("feedbackErgebnis2").style.color = "green";
+    } else {
+      document.getElementById("feedbackErgebnis2").textContent = "Leider falsch.";
+      document.getElementById("feedbackErgebnis2").style.color = "red";
+    }
+  }
+
+  if (i === 3) {
+    if (val === "5" || val === "5 ohm" || val === "5ohm" || val === "5 Ω") {
+      document.getElementById("feedbackErgebnis3").textContent = "Richtig!";
+      document.getElementById("feedbackErgebnis3").style.color = "green";
+    } else {
+      document.getElementById("feedbackErgebnis3").textContent = "Leider falsch.";
+      document.getElementById("feedbackErgebnis3").style.color = "red";
+    }
+  }
+
+  if (i === 4) {
+    if (val === "6" || val === "6w" || val === "6 w" || val === "6watt" || val === "6 watt") {
+      document.getElementById("feedbackErgebnis4").textContent = "Richtig!";
+      document.getElementById("feedbackErgebnis4").style.color = "green";
+    } else {
+      document.getElementById("feedbackErgebnis4").textContent = "Leider falsch.";
+      document.getElementById("feedbackErgebnis4").style.color = "red";
+    }
+  }
+
+  if (i === 5) {
+    if (val === "120" || val === "120j" || val === "120 j" || val === "120joule" || val === "120 joule") {
+      document.getElementById("feedbackErgebnis5").textContent = "Richtig!";
+      document.getElementById("feedbackErgebnis5").style.color = "green";
+    } else {
+      document.getElementById("feedbackErgebnis5").textContent = "Leider falsch.";
+      document.getElementById("feedbackErgebnis5").style.color = "red";
+    }
+  }
+
 </script>
 </body>
 </html>
