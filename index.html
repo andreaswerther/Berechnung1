@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <title>Physik-Rechenquiz – Leicht</title>
+  <meta charset="UTF-8">
+  <title>Physik-Rechenquiz – Leicht (sichtbar)</title>
   <style>
     body { font-family: sans-serif; background: #eef; padding: 20px; }
     .frage { background: white; padding: 15px; margin: 15px 0; border-radius: 6px; }
@@ -17,15 +17,133 @@
     .formelziel {
       min-height: 60px; border: 2px dashed #333; padding: 10px; background: #f8f8f8;
     }
-    input[type='text'] {
-      padding: 5px; width: 160px;
-    }
+    input[type='text'] { padding: 5px; width: 160px; }
     .feedback { margin-top: 10px; font-weight: bold; }
   </style>
 </head>
 <body>
 <h1>Physik-Rechenquiz – Leicht</h1>
-<p>Jede Aufgabe besteht aus drei Schritten: gesuchte Größe bestimmen, Formel zusammenbauen, Ergebnis berechnen.</p>
+<p>5 Aufgaben mit Drag & Drop, freier Eingabe und Rückmeldung. Falsche Formeln führen zu einem Lernvideo.</p>
+
+
+<div class="frage">
+  <p><strong>Aufgabe 1</strong><br><em>Gegeben:</em> R = 4 Ohm, I = 2 A<br><em>Gesucht ist:</em> Spannung</p>
+  <p>1. Gib den richtigen Formelbuchstaben ein:</p>
+  <input type="text" id="eingabe1"> <span id="feedbackGesucht1" class="feedback"></span>
+
+  <p>2. Ziehe die richtige Formel in dieses Feld:</p>
+  <div><span class="draggable" draggable="true" ondragstart="drag(event)">=</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">P</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">t</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">E</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">·</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">+</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">W</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">Q</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">U</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">R</span></div>
+  <div id="ziel1" class="formelziel" ondragover="allowDrop(event)" ondrop="drop(event, 1)"></div>
+  <span id="feedbackFormel1" class="feedback"></span>
+
+  <p>3. Berechne das Ergebnis:</p>
+  <input type="text" id="ergebnis1"> <span id="feedbackErgebnis1" class="feedback"></span>
+</div>
+
+<div class="frage">
+  <p><strong>Aufgabe 2</strong><br><em>Gegeben:</em> U = 6 V, R = 2 Ohm<br><em>Gesucht ist:</em> Stromstärke</p>
+  <p>1. Gib den richtigen Formelbuchstaben ein:</p>
+  <input type="text" id="eingabe2"> <span id="feedbackGesucht2" class="feedback"></span>
+
+  <p>2. Ziehe die richtige Formel in dieses Feld:</p>
+  <div><span class="draggable" draggable="true" ondragstart="drag(event)">/</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">E</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">=</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">P</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">I</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">U</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">W</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">+</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">R</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">·</span></div>
+  <div id="ziel2" class="formelziel" ondragover="allowDrop(event)" ondrop="drop(event, 2)"></div>
+  <span id="feedbackFormel2" class="feedback"></span>
+
+  <p>3. Berechne das Ergebnis:</p>
+  <input type="text" id="ergebnis2"> <span id="feedbackErgebnis2" class="feedback"></span>
+</div>
+
+<div class="frage">
+  <p><strong>Aufgabe 3</strong><br><em>Gegeben:</em> U = 10 V, I = 2 A<br><em>Gesucht ist:</em> Widerstand</p>
+  <p>1. Gib den richtigen Formelbuchstaben ein:</p>
+  <input type="text" id="eingabe3"> <span id="feedbackGesucht3" class="feedback"></span>
+
+  <p>2. Ziehe die richtige Formel in dieses Feld:</p>
+  <div><span class="draggable" draggable="true" ondragstart="drag(event)">=</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">+</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">·</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">E</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">/</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">Q</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">U</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">P</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">I</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">t</span></div>
+  <div id="ziel3" class="formelziel" ondragover="allowDrop(event)" ondrop="drop(event, 3)"></div>
+  <span id="feedbackFormel3" class="feedback"></span>
+
+  <p>3. Berechne das Ergebnis:</p>
+  <input type="text" id="ergebnis3"> <span id="feedbackErgebnis3" class="feedback"></span>
+</div>
+
+<div class="frage">
+  <p><strong>Aufgabe 4</strong><br><em>Gegeben:</em> U = 12 V, I = 0.5 A<br><em>Gesucht ist:</em> Leistung</p>
+  <p>1. Gib den richtigen Formelbuchstaben ein:</p>
+  <input type="text" id="eingabe4"> <span id="feedbackGesucht4" class="feedback"></span>
+
+  <p>2. Ziehe die richtige Formel in dieses Feld:</p>
+  <div><span class="draggable" draggable="true" ondragstart="drag(event)">=</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">E</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">·</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">W</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">t</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">Q</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">P</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">I</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">/</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">R</span></div>
+  <div id="ziel4" class="formelziel" ondragover="allowDrop(event)" ondrop="drop(event, 4)"></div>
+  <span id="feedbackFormel4" class="feedback"></span>
+
+  <p>3. Berechne das Ergebnis:</p>
+  <input type="text" id="ergebnis4"> <span id="feedbackErgebnis4" class="feedback"></span>
+</div>
+
+<div class="frage">
+  <p><strong>Aufgabe 5</strong><br><em>Gegeben:</em> P = 60 W, t = 2 s<br><em>Gesucht ist:</em> Energie</p>
+  <p>1. Gib den richtigen Formelbuchstaben ein:</p>
+  <input type="text" id="eingabe5"> <span id="feedbackGesucht5" class="feedback"></span>
+
+  <p>2. Ziehe die richtige Formel in dieses Feld:</p>
+  <div><span class="draggable" draggable="true" ondragstart="drag(event)">P</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">W</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">=</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">/</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">U</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">R</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">+</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">Q</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">t</span>
+<span class="draggable" draggable="true" ondragstart="drag(event)">·</span></div>
+  <div id="ziel5" class="formelziel" ondragover="allowDrop(event)" ondrop="drop(event, 5)"></div>
+  <span id="feedbackFormel5" class="feedback"></span>
+
+  <p>3. Berechne das Ergebnis:</p>
+  <input type="text" id="ergebnis5"> <span id="feedbackErgebnis5" class="feedback"></span>
+</div>
+
+
+<button onclick="checkAlles()">Quiz auswerten</button>
+
 <script>
 function allowDrop(ev) { ev.preventDefault(); }
 function drop(ev, id) {
@@ -37,9 +155,8 @@ function drop(ev, id) {
   document.getElementById("ziel" + id).appendChild(span);
 }
 function drag(ev) { ev.dataTransfer.setData("text", ev.target.textContent); }
-
 function checkAlles() {
-  let korrekt = 0;
+let korrekt = 0;
 
   let eingabe1 = document.getElementById("eingabe1").value.trim();
   let formel1 = Array.from(document.getElementById("ziel1").children).map(el => el.textContent).join('');
@@ -75,34 +192,6 @@ function checkAlles() {
 
   if (ok) korrekt++;
 
-<div class="frage">
-  <p><strong>Aufgabe 1</strong><br>Gegeben: R = 4 Ohm, I = 2 A<br>Gesucht ist: Spannung</p>
-  <p>1. Gib den richtigen Formelbuchstaben ein:</p>
-  <input type="text" id="eingabe1"> <span id="feedbackGesucht1" class="feedback"></span>
-
-  <p>2. Ziehe die richtige Formel hierhin:</p>
-  <div><span class="draggable" draggable="true" ondragstart="drag(event)">÷</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">E</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">·</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">P</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">R</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">I</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">-</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">=</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">W</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">S</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">Q</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">/</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">t</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">+</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">U</span></div>
-  <div id="ziel1" class="formelziel" ondragover="allowDrop(event)" ondrop="drop(event, 1)"></div>
-  <span id="feedbackFormel1" class="feedback"></span>
-
-  <p>3. Ergebnis eingeben:</p>
-  <input type="text" id="ergebnis1"> <span id="feedbackErgebnis1" class="feedback"></span>
-</div>
-
   let eingabe2 = document.getElementById("eingabe2").value.trim();
   let formel2 = Array.from(document.getElementById("ziel2").children).map(el => el.textContent).join('');
   let ergebnis2 = document.getElementById("ergebnis2").value.trim().toLowerCase().replace(/\s+/g, '');
@@ -136,34 +225,6 @@ function checkAlles() {
   }
 
   if (ok) korrekt++;
-
-<div class="frage">
-  <p><strong>Aufgabe 2</strong><br>Gegeben: U = 6 V, R = 2 Ohm<br>Gesucht ist: Stromstärke</p>
-  <p>1. Gib den richtigen Formelbuchstaben ein:</p>
-  <input type="text" id="eingabe2"> <span id="feedbackGesucht2" class="feedback"></span>
-
-  <p>2. Ziehe die richtige Formel hierhin:</p>
-  <div><span class="draggable" draggable="true" ondragstart="drag(event)">E</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">R</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">/</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">-</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">=</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">U</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">I</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">Q</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">+</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">·</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">W</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">t</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">÷</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">P</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">S</span></div>
-  <div id="ziel2" class="formelziel" ondragover="allowDrop(event)" ondrop="drop(event, 2)"></div>
-  <span id="feedbackFormel2" class="feedback"></span>
-
-  <p>3. Ergebnis eingeben:</p>
-  <input type="text" id="ergebnis2"> <span id="feedbackErgebnis2" class="feedback"></span>
-</div>
 
   let eingabe3 = document.getElementById("eingabe3").value.trim();
   let formel3 = Array.from(document.getElementById("ziel3").children).map(el => el.textContent).join('');
@@ -199,34 +260,6 @@ function checkAlles() {
 
   if (ok) korrekt++;
 
-<div class="frage">
-  <p><strong>Aufgabe 3</strong><br>Gegeben: U = 10 V, I = 2 A<br>Gesucht ist: Widerstand</p>
-  <p>1. Gib den richtigen Formelbuchstaben ein:</p>
-  <input type="text" id="eingabe3"> <span id="feedbackGesucht3" class="feedback"></span>
-
-  <p>2. Ziehe die richtige Formel hierhin:</p>
-  <div><span class="draggable" draggable="true" ondragstart="drag(event)">+</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">Q</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">·</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">I</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">W</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">S</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">U</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">R</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">÷</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">=</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">-</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">/</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">E</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">P</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">t</span></div>
-  <div id="ziel3" class="formelziel" ondragover="allowDrop(event)" ondrop="drop(event, 3)"></div>
-  <span id="feedbackFormel3" class="feedback"></span>
-
-  <p>3. Ergebnis eingeben:</p>
-  <input type="text" id="ergebnis3"> <span id="feedbackErgebnis3" class="feedback"></span>
-</div>
-
   let eingabe4 = document.getElementById("eingabe4").value.trim();
   let formel4 = Array.from(document.getElementById("ziel4").children).map(el => el.textContent).join('');
   let ergebnis4 = document.getElementById("ergebnis4").value.trim().toLowerCase().replace(/\s+/g, '');
@@ -261,34 +294,6 @@ function checkAlles() {
 
   if (ok) korrekt++;
 
-<div class="frage">
-  <p><strong>Aufgabe 4</strong><br>Gegeben: U = 12 V, I = 0.5 A<br>Gesucht ist: Leistung</p>
-  <p>1. Gib den richtigen Formelbuchstaben ein:</p>
-  <input type="text" id="eingabe4"> <span id="feedbackGesucht4" class="feedback"></span>
-
-  <p>2. Ziehe die richtige Formel hierhin:</p>
-  <div><span class="draggable" draggable="true" ondragstart="drag(event)">W</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">+</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">I</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">t</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">÷</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">U</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">Q</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">/</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">=</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">E</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">S</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">-</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">·</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">P</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">R</span></div>
-  <div id="ziel4" class="formelziel" ondragover="allowDrop(event)" ondrop="drop(event, 4)"></div>
-  <span id="feedbackFormel4" class="feedback"></span>
-
-  <p>3. Ergebnis eingeben:</p>
-  <input type="text" id="ergebnis4"> <span id="feedbackErgebnis4" class="feedback"></span>
-</div>
-
   let eingabe5 = document.getElementById("eingabe5").value.trim();
   let formel5 = Array.from(document.getElementById("ziel5").children).map(el => el.textContent).join('');
   let ergebnis5 = document.getElementById("ergebnis5").value.trim().toLowerCase().replace(/\s+/g, '');
@@ -322,38 +327,8 @@ function checkAlles() {
   }
 
   if (ok) korrekt++;
-
-<div class="frage">
-  <p><strong>Aufgabe 5</strong><br>Gegeben: P = 60 W, t = 2 s<br>Gesucht ist: Energie</p>
-  <p>1. Gib den richtigen Formelbuchstaben ein:</p>
-  <input type="text" id="eingabe5"> <span id="feedbackGesucht5" class="feedback"></span>
-
-  <p>2. Ziehe die richtige Formel hierhin:</p>
-  <div><span class="draggable" draggable="true" ondragstart="drag(event)">S</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">E</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">I</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">=</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">U</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">t</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">W</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">·</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">÷</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">/</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">+</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">P</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">Q</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">-</span>
-<span class="draggable" draggable="true" ondragstart="drag(event)">R</span></div>
-  <div id="ziel5" class="formelziel" ondragover="allowDrop(event)" ondrop="drop(event, 5)"></div>
-  <span id="feedbackFormel5" class="feedback"></span>
-
-  <p>3. Ergebnis eingeben:</p>
-  <input type="text" id="ergebnis5"> <span id="feedbackErgebnis5" class="feedback"></span>
-</div>
-
-  alert("Du hast " + korrekt + " von 5 Aufgaben richtig gelöst.");
+alert("Du hast " + korrekt + " von 5 Aufgaben richtig gelöst.");
 }
 </script>
-<button onclick="checkAlles()">Quiz auswerten</button>
 </body>
 </html>
