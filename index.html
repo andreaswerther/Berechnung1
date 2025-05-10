@@ -116,7 +116,7 @@ function checkFormel() {
     document.getElementById("feedback").textContent = "Richtig! U = R · I ist korrekt.";
     document.getElementById("feedback").style.color = "green";
   } else {
-    document.getElementById("feedback").textContent = "Leider falsch. Überlege dir die richtige Formel zur Spannung.";
+    document.getElementById("feedback").innerHTML = "Leider falsch. Überlege dir die richtige Formel zur Spannung.<br><br><strong>Hier kannst du dein Wissen nochmal auffrischen:</strong> <a href='https://studyflix.de/elektrotechnik/elektrische-spannung-1831/video' target='_blank'>Elektrische Spannung einfach erklärt – Studyflix</a>";
     document.getElementById("feedback").style.color = "red";
   }
 }
