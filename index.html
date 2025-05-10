@@ -112,7 +112,7 @@ function checkGesucht() {
 
 function checkFormel() {
   const ziel = Array.from(document.getElementById("formelziel").children).map(el => el.textContent).join('');
-  if (ziel === "U=R·I") {
+  if (ziel === "U=R·I" || ziel === "U=I·R") {
     document.getElementById("feedback").textContent = "Richtig! U = R · I ist korrekt.";
     document.getElementById("feedback").style.color = "green";
   } else {
