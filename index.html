@@ -151,7 +151,7 @@ function drop(ev, id) {
   const data = ev.dataTransfer.getData("text");
   const span = document.createElement("span");
   span.className = "droppable";
-  document.getElementById('ziel' + id).innerHTML = ''; span.textContent = data;
+  span.textContent = data;
   document.getElementById("ziel" + id).appendChild(span);
 }
 function drag(ev) { ev.dataTransfer.setData("text", ev.target.textContent); }
