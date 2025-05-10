@@ -6,11 +6,39 @@
   <style>
     body { font-family: sans-serif; padding: 20px; background: #eef; }
     .frage { margin-bottom: 25px; }
-    .droppable, .draggable { display: inline-block; padding: 10px 15px; margin: 5px; border: 1px solid #333; border-radius: 5px; background: white; cursor: grab; }
-    .droppable { width: 40px; height: 40px; background: #ddd; text-align: center; vertical-align: middle; line-height: 40px; }
-    #formelziel { min-height: 60px; border: 2px dashed #333; padding: 10px; margin-top: 10px; background: #f8f8f8; }
-    #feedback, #feedbackGesucht, #feedbackErgebnis { margin-top: 10px; font-weight: bold; }
-    input[type='text'], input[type='number'] { padding: 5px; margin-left: 10px; width: 150px; }
+    .droppable, .draggable {
+      display: inline-block;
+      padding: 10px 15px;
+      margin: 5px;
+      border: 1px solid #333;
+      border-radius: 5px;
+      background: white;
+      cursor: grab;
+    }
+    .droppable {
+      width: 40px;
+      height: 40px;
+      background: #ddd;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 40px;
+    }
+    #formelziel {
+      min-height: 60px;
+      border: 2px dashed #333;
+      padding: 10px;
+      margin-top: 10px;
+      background: #f8f8f8;
+    }
+    #feedback, #feedbackGesucht, #feedbackErgebnis {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input[type='text'] {
+      padding: 5px;
+      width: 150px;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
@@ -20,7 +48,8 @@
 <div class="frage">
   <p><strong>Gegeben:</strong> R = 4 Ohm, I = 2 A</p>
   <p><strong>1. Gesucht ist:</strong> Spannung</p>
-  <input type="text" id="gesuchteGroesse" placeholder="z. B. U">
+  <label>Gib den Formelbuchstaben für die gesuchte Größe ein:</label><br>
+  <input type="text" id="gesuchteGroesse">
   <button onclick="checkGesucht()">Prüfen</button>
   <p id="feedbackGesucht"></p>
 </div>
@@ -43,7 +72,8 @@
 
 <div class="frage">
   <p><strong>3. Wie groß ist die Spannung?</strong></p>
-  <input type="text" id="nutzerErgebnis" placeholder="z. B. 8 V oder 8">
+  <label>Gib das Ergebnis ein (mit oder ohne Einheit):</label><br>
+  <input type="text" id="nutzerErgebnis">
   <button onclick="checkErgebnis()">Prüfen</button>
   <p id="feedbackErgebnis"></p>
 </div>
@@ -72,7 +102,7 @@ function checkGesucht() {
     document.getElementById("feedbackGesucht").textContent = "Richtig: Gesucht ist U.";
     document.getElementById("feedbackGesucht").style.color = "green";
   } else {
-    document.getElementById("feedbackGesucht").textContent = "Falsch. Gib den richtigen Buchstaben an – genau wie in der Formel.";
+    document.getElementById("feedbackGesucht").textContent = "Falsch. Gib den richtigen Großbuchstaben an.";
     document.getElementById("feedbackGesucht").style.color = "red";
   }
 }
@@ -83,7 +113,7 @@ function checkFormel() {
     document.getElementById("feedback").textContent = "Richtig! U = R · I ist korrekt.";
     document.getElementById("feedback").style.color = "green";
   } else {
-    document.getElementById("feedback").textContent = "Leider falsch. Überlege dir die Grundformel zur Spannung.";
+    document.getElementById("feedback").textContent = "Leider falsch. Überlege dir die richtige Formel zur Spannung.";
     document.getElementById("feedback").style.color = "red";
   }
 }
